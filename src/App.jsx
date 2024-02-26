@@ -3,6 +3,7 @@ import Hero from './Components/Hero/Hero';
 import Programs from './Components/Programs/Programs';
 import Title from './Components/Title/Title';
 import About from './Components/About/About';
+import Campus from './Components/Campus/Campus';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Programs />
         <About />
         <Title subtitle='Gallery' title='Campus Photos' />
+        <Campus />
+        <Title subtitle='Testimonials' title='What Student Says' />
       </div>
     </div>
   );
