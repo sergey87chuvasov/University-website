@@ -1,29 +1,29 @@
-import {
-  Link,
-  Button,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-} from 'react-scroll';
+import { Link } from 'react-scroll';
 
 import './Navbar.css';
 
 import logo from '../../assets/logo.png';
+import menu_icon from '../../assets/menu-icon.png';
 import { useEffect, useState } from 'react';
 
 function Navbar() {
   const [sticky, setSticky] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
       window.scrollY > 50 ? setSticky(true) : setSticky(false);
     });
   }, []);
+
+  const toggleMenu = () => {
+    mobileMenu ? setMobileMenu(false) : setMobileMenu(true);
+  };
+
   return (
     <nav className={`container ${sticky ? 'dark-nav' : ''}`}>
       <img className='logo' src={logo} alt='logo pic' />
-      <ul>
+      <ul className={mobileMenu ? '' : 'hide-mobile-menu'}>
         <li>
           <Link to='hero' smooth={true} offset={0} duration={500}>
             Home
@@ -57,10 +57,16 @@ function Navbar() {
             duration={500}
             className='btn'
           >
-            Contact Us
+            Contact us
           </Link>
         </li>
       </ul>
+      <img
+        className='menu-icon'
+        src={menu_icon}
+        alt='menu-icon-pic'
+        onClick={toggleMenu}
+      />
     </nav>
   );
 }
